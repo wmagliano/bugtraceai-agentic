@@ -90,7 +90,7 @@ The DVWA policy preserves the authenticated cookie-jar model and constrains Uplo
 1. Build an isolated DVWA laboratory.
 2. Prepare the Kali MCP host and supplied MCP component.
 3. Start the local LLM endpoint.
-4. Review reference IPs and DVWA profile in `agent/config/` and `agent/config.env`.
+4. Review reference IPs and DVWA profile in `agent/config/` and `agent/config.env`; explicitly verify the effective DVWA `authentication.security` level before every run.
 5. Initialize the agent and run the experiment using the baseline scripts.
 
 This release intentionally does not hide target-specific settings behind a new installer. See [configuration](docs/configuration.md) and [reference lab](docs/reference-lab.md).
