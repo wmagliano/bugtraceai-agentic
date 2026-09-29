@@ -57,6 +57,39 @@ Kali MCP  : 192.168.0.34:9001
 
 These values are deliberately visible because this Alpha prioritizes reproducibility over a polished installer.
 
+## Hardware used in the research laboratory
+
+The DVWA Alpha experiments were developed and exercised on a local workstation designed to keep the LLM and research data under operator control.
+
+| Component | Research laboratory |
+|---|---|
+| Platform | X99-T8D workstation |
+| CPU | 2 × Intel Xeon E5-2678 v3 |
+| System RAM | 256 GB |
+| GPU | NVIDIA GeForce RTX 3090 |
+| VRAM | 24 GB |
+| LLM | BugTraceAI-CORE-Ultra-SFT Q6_K |
+| Inference | llama.cpp, GPU offload |
+
+The large system-memory capacity is part of the research workstation and should **not** be interpreted as a requirement for BugTraceAI.
+
+### Practical minimum recommended
+
+For reproducing this Alpha with the supplied 8B-class Q6_K local model, a practical starting point is:
+
+| Component | Recommended minimum |
+|---|---|
+| CPU | Modern x86-64 CPU, approximately 8 threads or more |
+| System RAM | 32 GB |
+| GPU | NVIDIA GPU with approximately 16 GB VRAM |
+| Storage | 30 GB free space for model, project and experiment outputs |
+| LLM runtime | llama.cpp-compatible local inference |
+| Network | Connectivity between Agent, Kali MCP, LLM and isolated DVWA hosts |
+
+**24 GB VRAM is preferred** for a setup closer to the reference laboratory and provides more headroom for context and GPU offload. CPU-only or lower-VRAM configurations may be possible with different offload/context settings, but they are expected to be substantially slower and are not the configuration characterized by this research.
+
+These minimum values are **practical recommendations, not experimentally established lower bounds**. Performance depends on model quantization, context size, GPU offload, batch settings and experiment workload.
+
 ## Reference local LLM
 
 ```bash
