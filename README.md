@@ -136,9 +136,17 @@ This release intentionally does not hide target-specific settings behind a new i
 - Resolution depends on local model, context, budgets and experimental configuration.
 - bWAPP, Juice Shop and WebGoat are roadmap targets, not capabilities claimed by this release.
 
-## Responsible use
+## Legal and ethical use disclaimer
 
-Use BugTraceAI only on systems you own or are explicitly authorized to test. The included defaults are for an intentionally vulnerable, isolated DVWA laboratory.
+BugTraceAI is an experimental vulnerability-analysis research project intended for **controlled laboratory environments, cybersecurity research, education, and systems for which the operator has explicit authorization to perform security testing**.
+
+**Do not use BugTraceAI to scan, analyze, test, exploit, or otherwise interact with systems, networks, applications, or infrastructure without the owner's explicit permission.** The reference configuration and supplied workflows are designed for an intentionally vulnerable, isolated DVWA laboratory.
+
+The end user is solely responsible for ensuring that every use of this software complies with applicable laws, regulations, organizational policies, contractual obligations, and authorization boundaries. The project authors and contributors do not authorize use against third-party systems and are not responsible for misuse, unauthorized activity, damage, service disruption, data loss, or legal consequences resulting from the user's operation of the software.
+
+By using BugTraceAI, the operator accepts responsibility for the targets selected, the permissions obtained, the commands executed, and the resulting effects. When in doubt about authorization or scope, **do not run the analyzer against the target**.
+
+This disclaimer complements, and does not replace, the terms of the Apache License 2.0.
 
 ## Documentation
 
