@@ -126,7 +126,9 @@ The DVWA policy preserves the authenticated cookie-jar model and constrains Uplo
 4. Review reference IPs and DVWA profile in `agent/config/` and `agent/config.env`; explicitly verify the effective DVWA `authentication.security` level before every run.
 5. Initialize the agent and run the experiment using the baseline scripts.
 
-This release intentionally does not hide target-specific settings behind a new installer. See [configuration](docs/configuration.md) and [reference lab](docs/reference-lab.md).
+This release intentionally does not hide target-specific settings behind a new installer.
+
+**Operator documentation:** [Installation & Operations](docs/installation-and-operations.md) · [Basic Configuration](docs/basic-configuration.md) · [Configuration reference](docs/configuration.md) · [Reference lab](docs/reference-lab.md).
 
 ## Limitations
 
@@ -150,7 +152,7 @@ This disclaimer complements, and does not replace, the terms of the Apache Licen
 
 ## Documentation
 
-[Project overview](docs/project-overview.md) · [Methodology](docs/scientific-methodology.md) · [Architecture](docs/architecture.md) · [Reference lab](docs/reference-lab.md) · [Configuration](docs/configuration.md) · [Kali MCP](docs/kali-mcp.md) · [Roadmap](docs/limitations-and-roadmap.md) · [Source integrity](docs/source-integrity.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+[Installation & Operations](docs/installation-and-operations.md) · [Basic Configuration](docs/basic-configuration.md) · [Project overview](docs/project-overview.md) · [Methodology](docs/scientific-methodology.md) · [Architecture](docs/architecture.md) · [Reference lab](docs/reference-lab.md) · [Configuration](docs/configuration.md) · [Kali MCP](docs/kali-mcp.md) · [Roadmap](docs/limitations-and-roadmap.md) · [Source integrity](docs/source-integrity.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
 ## License
 
