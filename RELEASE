@@ -1,0 +1,5 @@
+BugTraceAI Agentic v0.1.0-alpha
+Research baseline: v3.0.5b-r0-v2-repair
+Reasoner patch: final bounded contract-repair action type guard
+Validated release scope: DVWA laboratory
+MCP: kali_mcp-v2.5.6d-open
