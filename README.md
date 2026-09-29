@@ -63,6 +63,59 @@ Kali MCP  : 192.168.0.34:9001
 
 These values are deliberately visible because this Alpha prioritizes reproducibility over a polished installer.
 
+## Inside a real BugTraceAI decision cycle
+
+The following example is taken from a **real controlled DVWA LOW laboratory run**. Its purpose is not to present a password attack recipe, but to make the internal behavior of the agent observable: how a resource is selected, how a hypothesis is tested, how execution is constrained by the contract/MCP boundary, how evidence is returned to the Reasoner, and how the resource finally reaches a terminal state.
+
+<p align="center">
+  <img src="assets/bugtraceai-dvwa-bruteforce-flow.png" alt="BugTraceAI — controlled DVWA LOW brute-force hypothesis validation and agent decision cycle" width="100%">
+</p>
+
+### What the agent is doing, step by step
+
+1. **Scheduler and resource budget — select work, do not execute blindly.**  
+   The Scheduler selects the DVWA `/vulnerabilities/brute/` resource and assigns it a bounded resource budget. At this point the resource is `HYPOTHESIS_ACTIVE`: BugTraceAI has something to investigate, but that state is not itself a vulnerability verdict.
+
+2. **Session Guard — verify the experimental preconditions.**  
+   Before reasoning about the challenge, Session Guard confirms that the DVWA session is authenticated, that the effective security level is `LOW`, and that the session check is valid. This prevents the Reasoner from interpreting a login/session failure as evidence about the vulnerability under study.
+
+3. **Reasoner — establish a falsifiable contrast.**  
+   From the previous observation, the LLM identifies the explicit failure response `Username and/or password incorrect.`. It records that observation as evidence and states what is still missing: observing the response produced by a valid credential so that failure and success can be distinguished.
+
+4. **Decision Contract — turn reasoning into one bounded action.**  
+   The Reasoner emits a structured `propose_mcp_command` action. The decision includes a reason, risk level, approval requirement and an `expected_evidence` matcher. The important architectural point is that reasoning does not directly execute against DVWA; it produces an action that must satisfy the agent contract.
+
+5. **Executor + Kali MCP — validate and perform the controlled test.**  
+   The proposed action is validated by the MCP contract and, in autonomous laboratory mode, approved for execution. Kali MCP performs the controlled request using the existing DVWA cookie jar. The resulting stdout/stderr and execution metadata are returned to BugTraceAI and stored as an observation.
+
+6. **Evidence and cognitive memory — reason from the result, not from the intention.**  
+   On the next cycle the Reasoner consumes the actual saved result. It observes the explicit success response `Welcome to the password protected area admin`, contrasts it with the previously learned failure response, records the fact/evidence with high confidence, and marks the hypothesis as supported.
+
+7. **State transition — evidence changes the resource state.**  
+   With the contrast experimentally observed, the resource moves to `CONFIRMED`. The agent records why the transition occurred rather than treating successful command execution alone as proof of a vulnerability.
+
+8. **Operator checkpoint and completion — separate confirmation from workflow closure.**  
+   BugTraceAI asks whether the operator wants to document, continue controlled exploitation, collect more non-destructive evidence, perform deeper analysis, or mark the case inconclusive. In the autonomous research run, the configured checkpoint selects close/document, so the resource transitions from `CONFIRMED` to `COMPLETED` and the Scheduler releases the Analysis Item.
+
+The observed lifecycle in this example is therefore:
+
+```text
+HYPOTHESIS_ACTIVE
+        │
+        ▼
+     TESTING
+        │
+        │  evidence: failure/success response contrast
+        ▼
+    CONFIRMED
+        │
+        │  operator/autonomous checkpoint
+        ▼
+    COMPLETED
+```
+
+> **Scientific interpretation.** This trace demonstrates the agent's hypothesis/evidence workflow on the intentionally vulnerable DVWA LOW challenge. The shown run validates the brute-force hypothesis by contrasting a known invalid credential with the known valid laboratory credential (`admin/password`). It should **not** be interpreted as evidence that this particular trace performed exhaustive password enumeration. The research value of the example is the observable decision architecture: selection → precondition check → hypothesis → contracted action → controlled execution → evidence → state transition → closure.
+
 ## Hardware used in the research laboratory
 
 The DVWA Alpha experiments were developed and exercised on a local workstation designed to keep the LLM and research data under operator control.
