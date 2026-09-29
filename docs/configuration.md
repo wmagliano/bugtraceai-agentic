@@ -27,3 +27,14 @@ URL/vulnerability restrictions belong to configuration/policy, not to the Casset
 ## Cassette selection
 
 The baseline contains `bt-core-2026`, `bt-core-tech-php-2026` and `bt-layered-dvwa-2026`. Cassette content informs reasoning; it is not evidence that the active target is vulnerable.
+
+## Pre-run consistency check
+
+The published scientific snapshot intentionally preserves the configuration files as supplied by the closed baseline. Before running an experiment, verify the **effective** values rather than inferring them from a filename or profile label:
+
+- `agent/config/dvwa.json` currently identifies itself as `DVWA Low - discovery auto` while `authentication.security` is `high`.
+- `agent/config/sites/dvwa.json` also carries `authentication.security: high`.
+- Select the intended DVWA level (`low`, `medium` or `high`) explicitly for the experiment and record that choice with the run output.
+- `agent/reasoner_llm.py` preserves the baseline loopback LLM endpoint `http://127.0.0.1:8080/completion`; change it to the actual llama-server address when Agent and LLM are on different hosts (the reference distributed lab uses `192.168.0.9:8080`).
+
+These are configuration checks, not changes to the Alpha architecture. They are documented instead of silently rewriting the closed research snapshot.
