@@ -25,6 +25,12 @@ Original baseline version markers are retained inside `agent/` for scientific tr
 
 ## Architecture
 
+The following visual overview summarizes the Alpha laboratory, major components, operating flow and research positioning. The technical diagram immediately below shows the architecture and component relationships in greater detail.
+
+<p align="center">
+  <img src="assets/bugtraceai-banner.png" alt="BugTraceAI Agentic — architecture, workflow and research laboratory overview" width="100%">
+</p>
+
 ```mermaid
 flowchart LR
     LLM[Local LLM<br/>192.168.0.9:8080] -->|reasoning| AGENT
