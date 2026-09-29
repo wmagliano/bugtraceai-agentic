@@ -1,10 +1,31 @@
+<div align="center">
+
 # BugTraceAI Agentic
 
-> **v0.1.0-alpha — DVWA Research Release**
+### Local-LLM Agentic Security Research
+
+**A reproducible research Alpha for studying autonomous vulnerability analysis under controlled execution contracts.**
+
+<br>
+
+![Release](https://img.shields.io/badge/release-v0.1.0--alpha-7c3aed?style=for-the-badge)
+![Target](https://img.shields.io/badge/validated-DVWA-06b6d4?style=for-the-badge)
+![LLM](https://img.shields.io/badge/LLM-local-2563eb?style=for-the-badge)
+![MCP](https://img.shields.io/badge/Kali-MCP-0ea5e9?style=for-the-badge)
+![License](https://img.shields.io/badge/license-Apache--2.0-22c55e?style=for-the-badge)
+
+**Research release:** `v0.1.0-alpha` · **Scientific baseline:** `v3.0.5b-r0-v2-repair`
+
+[Architecture](#architecture) · [Reference Lab](#reference-laboratory) · [Real Decision Cycle](#inside-a-real-bugtraceai-decision-cycle) · [Getting Started](#getting-started) · [Documentation](#documentation)
+
+</div>
+
+---
 
 `bugtraceai-agentic` is a **working project name**. This repository publishes a reproducible Alpha snapshot of the BugTraceAI scientific research project: an experimental local-LLM agent architecture for autonomous cybersecurity analysis in a controlled laboratory.
 
-**DVWA is the only target claimed as validated here.** Work on bWAPP and other environments belongs to the continuing generalization study and is not presented as a supported capability of this Alpha.
+> [!IMPORTANT]
+> **DVWA is the only target claimed as validated in this release.** Work on bWAPP and other environments belongs to the continuing generalization study and is not presented as a supported capability of this Alpha.
 
 ## Why this project exists
 
