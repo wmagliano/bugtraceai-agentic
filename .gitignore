@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+*.log
+agent/logs/
+agent/reports/
+agent/runs/
+agent/backups/
+agent/projects/
+.env
+.venv/
+venv/
