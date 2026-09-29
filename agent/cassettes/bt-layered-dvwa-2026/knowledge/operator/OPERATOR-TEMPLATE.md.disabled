@@ -1,0 +1,9 @@
+# Plantilla L3 Operator (no cargada)
+
+Use este archivo como plantilla y renómbrelo a `.md` solo cuando deba entrar al RAG.
+
+Principios:
+- describir contexto particular que el agente necesita conocer;
+- no introducir payloads ni soluciones del desafío;
+- no usar esta capa para scope o prohibiciones: eso pertenece a Config;
+- no afirmar vulnerabilidades como hechos sin evidencia del target.

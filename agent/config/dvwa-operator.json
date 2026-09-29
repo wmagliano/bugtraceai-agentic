@@ -1,0 +1,103 @@
+{
+  "profile": "DVWA Low - discovery operator",
+  "target": {
+    "base_url": "http://192.168.0.200",
+    "target_host": "192.168.0.200",
+    "kali_host": "192.168.0.34",
+    "kali_mcp_base": "http://192.168.0.34:9001"
+  },
+  "authentication": {
+    "enabled": true,
+    "type": "dvwa_form",
+    "username": "admin",
+    "password": "password",
+    "security": "high",
+    "login_url": "http://192.168.0.200/login.php",
+    "cookie_jar": "/tmp/bugtraceai-session/dvwa_cookie.txt"
+  },
+  "http": {
+    "user_agent": "BugTraceAI/1.8.3 DVWA-Lab",
+    "headers": {
+      "Accept": "*/*"
+    },
+    "timeout": 20,
+    "follow_redirects": true,
+    "verify_tls": false
+  },
+  "scheduler": {
+    "autonomous": true,
+    "max_mcp_commands_per_resource": 6,
+    "specialized_last_attempt": true,
+    "max_errors_per_resource": 3,
+    "max_cycles": 500
+  },
+  "reporting": {
+    "run_directory": "runs",
+    "formats": [
+      "md",
+      "html",
+      "json"
+    ],
+    "separate_technical_log": true
+  },
+  "discovery": {
+    "mode": "operator",
+    "same_origin_only": true,
+    "max_urls": 500,
+    "static_resource_policy": "ignore",
+    "static_extensions": [
+      "css",
+      "js",
+      "png",
+      "jpg",
+      "jpeg",
+      "gif",
+      "svg",
+      "ico",
+      "woff",
+      "woff2",
+      "ttf",
+      "map"
+    ],
+    "fragment_policy": "discard"
+  },
+  "validation_profiles": {
+    "file_upload": {
+      "confirmation_scope": "upload_accepted_or_same_host_retrievable",
+      "response_marker": "succesfully uploaded!",
+      "case_sensitive": false,
+      "same_response_only": false,
+      "follow_uploaded_resource": true,
+      "evaluate_execution": true
+    },
+    "csp": {
+      "confirmation_scope": "policy_weakness",
+      "external_server_required": false,
+      "allowed_probe_origins": [
+        "http://127.0.0.1",
+        "http://localhost",
+        "http://example.invalid"
+      ],
+      "prefer_local_or_non_routable_probe": true,
+      "execution_required": false,
+      "separate_policy_weakness_from_exploitation": true
+    }
+  },
+  "cassette": {
+    "id": "dvwa-lab"
+  },
+  "adaptive_rag": {
+    "enabled": true,
+    "max_documents": 6,
+    "max_tokens": 3200,
+    "always_include_types": [
+      "evidence"
+    ]
+  },
+  "reasoner": {
+    "reflection": true,
+    "history_depth": 3,
+    "confirm_memory_usage": true,
+    "learning_trace": true
+  }
+}

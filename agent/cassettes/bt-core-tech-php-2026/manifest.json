@@ -1,0 +1,12 @@
+{
+  "id": "bt-core-tech-php-2026",
+  "version": "3.0.0-experimental",
+  "kind": "adaptive-rag-v2-layered",
+  "description": "L1 Core + L2 Technology PHP/Apache.",
+  "prescribes_actions": false,
+  "contains_payload_examples": false,
+  "contains_solution_knowledge": false,
+  "active_for_entire_scan": true,
+  "retrieval_mode": "adaptive-weighted-signals",
+  "purpose": "Validar separación L1 Core / L2 Technology / L3 Operator sin playbooks ni soluciones específicas."
+}
